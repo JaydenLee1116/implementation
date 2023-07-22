@@ -86,6 +86,7 @@ class LinkedList {
         return deletedNode;
       }
     }
+    this.count--;
   }
 
   deleteLast() {

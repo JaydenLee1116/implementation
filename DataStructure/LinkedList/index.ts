@@ -19,28 +19,29 @@
 // 마지막 삭제 - deleteLast()
 // 인덱스 읽기 - getNodeAt(index)
 
-// @ts-ignore
-class Node {
-  data: any;
-  next: Node | null;
-  constructor(data: any, next: Node | null = null) {
+class Node<T> {
+  data: T;
+  next: Node<T> | null;
+  constructor(data: T, next: Node<T> | null = null) {
     this.data = data;
     this.next = next;
   }
 }
 
-class LinkedList {
-  head: Node | null;
+class LinkedList<T> {
+  head: Node<T> | null;
   count: number;
   constructor() {
     this.head = null;
     this.count = 0;
   }
 
-  insertAt(index: number, data: any) {
+  insertAt(index: number, data: T) {
     if (index > this.count || index < 0) {
       throw new Error("insert하기 위한 index값이 범위에서 벗어납니다.");
     }
+
+    this.count++;
     const newNode = new Node(data);
     if (index === 0) {
       newNode.next = this.head;
@@ -57,10 +58,9 @@ class LinkedList {
         currentNode.next = newNode;
       }
     }
-    this.count++;
   }
 
-  insertLast(data: any) {
+  insertLast(data: T) {
     this.insertAt(this.count, data);
   }
 
@@ -69,6 +69,7 @@ class LinkedList {
       throw new Error("delete하기 위한 index값이 범위에서 벗어납니다.");
     }
 
+    this.count--;
     if (index === 0) {
       const deletedNode = this.head;
       this.head = this.head!.next;
@@ -86,7 +87,6 @@ class LinkedList {
         return deletedNode;
       }
     }
-    this.count--;
   }
 
   deleteLast() {

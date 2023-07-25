@@ -11,13 +11,15 @@
 - 데이터를 삽입, 삭제할 때도 O(n)이다.
  */
 
-// 모든 데이터 출력 - printAll
-// 모든 데이터 제거 - clear
-// 인덱스 삽입 - insertAt(index, data)
-// 마지막 삽입 - insertLast(data)
-// 인덱스 삭제 - deleteAt(index)
-// 마지막 삭제 - deleteLast()
-// 인덱스 읽기 - getNodeAt(index)
+/*
+  모든 데이터 출력 - printAll
+  모든 데이터 제거 - clear
+  인덱스 삽입 - insertAt(index, data)
+  마지막 삽입 - insertLast(data)
+  인덱스 삭제 - deleteAt(index)
+  마지막 삭제 - deleteLast()
+  인덱스 읽기 - getNodeAt(index)
+ */
 
 class Node<T> {
   data: T;

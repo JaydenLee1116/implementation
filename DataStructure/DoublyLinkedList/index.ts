@@ -23,7 +23,7 @@ class Node<T> {
   }
 }
 
-class LinkedList<T> {
+class DoublyLinkedList<T> {
   head: Node<T> | null;
   tail: Node<T> | null;
   count: number;
@@ -38,7 +38,6 @@ class LinkedList<T> {
       throw new Error("insert하기 위한 index값이 범위에서 벗어납니다.");
     }
 
-    this.count++;
     const newNode = new Node(data);
     if (index === 0) {
       newNode.next = this.head;
@@ -67,6 +66,7 @@ class LinkedList<T> {
     if (newNode.next === null) {
       this.tail = newNode;
     }
+    this.count++;
   }
 
   insertLast(data: T) {
@@ -78,7 +78,6 @@ class LinkedList<T> {
       throw new Error("delete하기 위한 index값이 범위에서 벗어납니다.");
     }
 
-    this.count--;
     if (index === 0) {
       const deletedNode = this.head;
       if (this.head!.next === null) {
@@ -88,11 +87,13 @@ class LinkedList<T> {
         this.head = this.head!.next;
         this.head.prev = null;
       }
+      this.count--;
       return deletedNode;
     } else if (index === this.count - 1) {
       const deletedNode = this.tail;
       this.tail!.prev!.next = null;
       this.tail = this.tail!.prev;
+      this.count--;
       return deletedNode;
     } else {
       let currentNode = this.head;
@@ -105,6 +106,7 @@ class LinkedList<T> {
         const deletedNode = currentNode.next;
         currentNode.next = currentNode.next!.next;
         currentNode.next!.prev = currentNode;
+        this.count--;
         return deletedNode;
       }
     }
@@ -141,4 +143,4 @@ class LinkedList<T> {
   }
 }
 
-export { Node, LinkedList };
+export { Node, DoublyLinkedList };

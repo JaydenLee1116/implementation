@@ -43,7 +43,6 @@ class LinkedList<T> {
       throw new Error("insert하기 위한 index값이 범위에서 벗어납니다.");
     }
 
-    this.count++;
     const newNode = new Node(data);
     if (index === 0) {
       newNode.next = this.head;
@@ -60,6 +59,7 @@ class LinkedList<T> {
         currentNode.next = newNode;
       }
     }
+    this.count++;
   }
 
   insertLast(data: T) {
@@ -71,10 +71,10 @@ class LinkedList<T> {
       throw new Error("delete하기 위한 index값이 범위에서 벗어납니다.");
     }
 
-    this.count--;
     if (index === 0) {
       const deletedNode = this.head;
       this.head = this.head!.next;
+      this.count--;
       return deletedNode;
     } else {
       let currentNode = this.head;
@@ -86,6 +86,7 @@ class LinkedList<T> {
       if (currentNode && currentNode.next) {
         const deletedNode = currentNode.next;
         currentNode.next = currentNode.next.next;
+        this.count--;
         return deletedNode;
       }
     }

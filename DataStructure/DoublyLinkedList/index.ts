@@ -15,7 +15,7 @@ class Node<T> {
   constructor(
     data: T,
     next: Node<T> | null = null,
-    prev: Node<T> | null = null,
+    prev: Node<T> | null = null
   ) {
     this.data = data;
     this.next = next;
@@ -35,7 +35,7 @@ class DoublyLinkedList<T> {
 
   insertAt(index: number, data: T) {
     if (index > this.count || index < 0) {
-      throw new Error("insert하기 위한 index값이 범위에서 벗어납니다.");
+      throw new Error('insert하기 위한 index값이 범위에서 벗어납니다.');
     }
 
     const newNode = new Node(data);
@@ -75,7 +75,7 @@ class DoublyLinkedList<T> {
 
   deleteAt(index: number) {
     if (index >= this.count || index < 0) {
-      throw new Error("delete하기 위한 index값이 범위에서 벗어납니다.");
+      throw new Error('delete하기 위한 index값이 범위에서 벗어납니다.');
     }
 
     if (index === 0) {
@@ -118,7 +118,7 @@ class DoublyLinkedList<T> {
 
   getNodeAt(index: number) {
     if (index >= this.count || index < 0) {
-      throw new Error("getNodeAt하기 위한 index값이 범위에서 벗어납니다.");
+      throw new Error('getNodeAt하기 위한 index값이 범위에서 벗어납니다.');
     }
     let currentNode = this.head;
     for (let i = 0; i < index; i++) {

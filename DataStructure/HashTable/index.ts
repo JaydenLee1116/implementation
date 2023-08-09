@@ -26,16 +26,13 @@ class HashData<T, P> {
 
 class HashTable<T, P> {
   arr: DoublyLinkedList<HashData<T, P>>[];
-  constructor() {
+  hashFunction: (key: T) => number;
+  constructor(hashFunction: (key: T) => number) {
     this.arr = [];
     for (let i = 0; i < 10; i++) {
       this.arr[i] = new DoublyLinkedList<HashData<T, P>>();
     }
-  }
-
-  hashFunction(num: T) {
-    if (typeof num !== 'number') throw new Error('number type only');
-    return num % 10;
+    this.hashFunction = hashFunction;
   }
 
   set(key: T, value: P) {

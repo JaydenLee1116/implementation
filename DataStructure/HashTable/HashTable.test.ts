@@ -1,6 +1,6 @@
 import { HashTable } from '.';
 
-describe('set(key, value)을 통해 해시함수를 거쳐 데이터를 추가할 수 있다.', () => {
+describe('HashTable', () => {
   const hashFunction = (key: number) => key % 10;
   const hash = new HashTable<number, string>(hashFunction);
   it('set(1, "제이든")을 하면 1번 인덱스 배열에 {key: 1, value: "제이든"} 형태의 데이터가 저장된다.', () => {
